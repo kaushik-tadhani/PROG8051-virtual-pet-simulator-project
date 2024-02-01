@@ -28,6 +28,11 @@ namespace PROG8051_virtual_pet_simulator_project
             const int MINIMUM = 0;
             const int MAXIMUM = 10;
 
+            // critical pet status monitoring scale.
+            const int CRITICAL_HUNGER = 8;
+            const int CRITICAL_HAPPINESS = 2;
+            const int CRTICAL_HEALTH = 2;
+
             Console.WriteLine("Welcome to the Virtual Pet Simulator!");
 
             // pet creations.
@@ -88,15 +93,15 @@ namespace PROG8051_virtual_pet_simulator_project
                         Console.WriteLine($"- Happiness: " + Convert.ToString(petHappiness));
 
                         // display message based on current pet status.
-                        if (petHunger > 8 || petHappiness < 2 || petHealth < 2)
+                        if (petHunger > CRITICAL_HUNGER || petHappiness < CRITICAL_HAPPINESS || petHealth < CRTICAL_HEALTH)
                         {
-                            if (petHunger > 8)
+                            if (petHunger > CRITICAL_HUNGER)
                                 Console.WriteLine($"\nWarning: {petName} will refusing to play if too hungry.");
 
-                            if (petHappiness < 2)
+                            if (petHappiness < CRITICAL_HAPPINESS)
                                 Console.WriteLine($"\nWarning: {petName}! seems unhappy.");
 
-                            if (petHealth < 2)
+                            if (petHealth < CRTICAL_HEALTH)
                                 Console.WriteLine($"\nWarning: {petName}! seems unhealthy.");
                         }
                         break;
@@ -111,15 +116,15 @@ namespace PROG8051_virtual_pet_simulator_project
                 }
 
                 // warning if the pet health deterioration.
-                if (petCare != STATUS && petCare != EXIT && (petHunger > 8 || petHappiness < 2 || petHealth < 2))
+                if (petCare != STATUS && petCare != EXIT && (petHunger > CRITICAL_HUNGER || petHappiness < CRITICAL_HAPPINESS || petHealth < CRTICAL_HEALTH))
                 {
-                    if (petHunger > 8)
+                    if (petHunger > CRITICAL_HUNGER)
                         Console.WriteLine($"\nWarning: {petName} will refusing to play if too hungry.");
 
-                    if (petHappiness < 2)
+                    if (petHappiness < CRITICAL_HAPPINESS)
                         Console.WriteLine($"\nWarning: {petName}! seems unhappy.");
 
-                    if (petHealth < 2)
+                    if (petHealth < CRTICAL_HEALTH)
                         Console.WriteLine($"\nWarning: {petName}! seems unhealthy.");
                 }
 
@@ -127,7 +132,7 @@ namespace PROG8051_virtual_pet_simulator_project
                 petHunger = Math.Min(MAXIMUM, petHunger + 1);
                 petHappiness = Math.Max(MINIMUM, petHappiness - 1);
 
-            } while (petCare != 5); // run loop until user action not equal to exist.
+            } while (petCare != EXIT); // run loop until user action not equal to exit.
 
         }
     }
