@@ -15,8 +15,10 @@ namespace PROG8051_virtual_pet_simulator_project
             int petHunger = 5;
             int petHappiness = 5;
 
+            Console.WriteLine("Welcome to the Virtual Pet Simulator!");
+
             // pet creations.
-            Console.WriteLine("Please choose a type of pet: Cat, Dog or Rabbit etc..");
+            Console.WriteLine("\nPlease choose a type of pet: Cat, Dog or Rabbit etc..");
 
             Console.Write("User Input: ");
             petType = Console.ReadLine();
@@ -61,7 +63,7 @@ namespace PROG8051_virtual_pet_simulator_project
 
                     case 3:
                         // reseting pet will increase health by two and decrease happiness by one.
-                        petHealth = Math.Min(10, petHealth + 2);
+                        petHealth = Math.Min(10, petHealth + 1);
                         petHappiness = Math.Max(0, petHappiness - 1);
                         Console.WriteLine($"\n{petName} is resting. His health improves, and happiness decreases slightly.");
                         break;
@@ -73,15 +75,15 @@ namespace PROG8051_virtual_pet_simulator_project
                         Console.WriteLine($"- Happiness: " + Convert.ToString(petHappiness));
 
                         // display message based on current pet status.
-                        if (petHunger >= 8 || petHappiness <= 2 || petHealth <= 2)
+                        if (petHunger > 8 || petHappiness < 2 || petHealth < 2)
                         {
-                            if (petHunger >= 8)
+                            if (petHunger > 8)
                                 Console.WriteLine($"\nWarning: {petName} will refusing to play if too hungry.");
 
-                            if (petHappiness <= 2)
+                            if (petHappiness < 2)
                                 Console.WriteLine($"\nWarning: {petName}! seems unhappy.");
 
-                            if (petHealth <= 2)
+                            if (petHealth < 2)
                                 Console.WriteLine($"\nWarning: {petName}! seems unhealthy.");
                         }
                         break;
@@ -96,15 +98,15 @@ namespace PROG8051_virtual_pet_simulator_project
                 }
 
                 // warning if the pet health deterioration.
-                if (petCare != 4 && petCare != 5 && (petHunger >= 8 || petHappiness <= 2 || petHealth <= 2))
+                if (petCare != 4 && petCare != 5 && (petHunger > 8 || petHappiness < 2 || petHealth < 2))
                 {
-                    if (petHunger >= 8)
+                    if (petHunger > 8)
                         Console.WriteLine($"\nWarning: {petName} will refusing to play if too hungry.");
 
-                    if (petHappiness <= 2)
+                    if (petHappiness < 2)
                         Console.WriteLine($"\nWarning: {petName}! seems unhappy.");
 
-                    if (petHealth <= 2)
+                    if (petHealth < 2)
                         Console.WriteLine($"\nWarning: {petName}! seems unhealthy.");
                 }
 
