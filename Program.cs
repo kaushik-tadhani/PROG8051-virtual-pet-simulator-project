@@ -66,8 +66,6 @@ namespace PROG8051_virtual_pet_simulator_project
                         Console.WriteLine($"- Hunger: " + Convert.ToString(petHunger));
                         Console.WriteLine($"- Health: " + Convert.ToString(petHealth));
                         Console.WriteLine($"- Happiness: " + Convert.ToString(petHappiness));
-
-                        
                         break;
 
                     case 5:
@@ -79,7 +77,8 @@ namespace PROG8051_virtual_pet_simulator_project
                         break;
                 }
 
-                
+                petHunger = Math.Min(10, petHunger + 1);
+                petHappiness = Math.Max(0, petHappiness - 1);
 
 
 
