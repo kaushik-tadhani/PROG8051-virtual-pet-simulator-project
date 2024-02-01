@@ -15,12 +15,13 @@ namespace PROG8051_virtual_pet_simulator_project
             int petHunger = 5;
             int petHappiness = 5;
 
+            // pet creations.
             Console.WriteLine("Please choose a type of pet: Cat, Dog or Rabbit etc..");
 
             Console.Write("User Input: ");
             petType = Console.ReadLine();
 
-
+            // pet naming.
             Console.WriteLine($"\nYou've chosen a {petType}. What would you like to name your pet?");
 
             Console.Write("\nUser input: ");
@@ -30,7 +31,7 @@ namespace PROG8051_virtual_pet_simulator_project
 
             do
             {
-
+                // main pet care actions menu
                 Console.WriteLine("\nMain Menu:");
                 Console.WriteLine($"1. Feed {petName}");
                 Console.WriteLine($"2. Play with {petName}");
@@ -41,21 +42,25 @@ namespace PROG8051_virtual_pet_simulator_project
                 Console.Write("\nUser Input: ");
                 petCare = Convert.ToInt32(Console.ReadLine());
 
+                // pet care actions
                 switch (petCare)
                 {
                     case 1:
+                        // feed to pet will decrease hunger by two and increase health by one.
                         petHunger = Math.Max(0, petHunger - 2);
                         petHealth = Math.Min(10, petHealth + 1);
                         Console.WriteLine($"\nYou feed {petName}. His hunger decreases, and health improves slightly.");
                         break;
 
                     case 2:
+                        // play with pet will increase hunger by one and happiness by two.
                         petHappiness = Math.Min(10, petHappiness + 2);
                         petHunger = Math.Min(10, petHunger + 1);
                         Console.WriteLine($"\nYou played with {petName}. His happiness increases, and hunger increases slightly.");
                         break;
 
                     case 3:
+                        // reseting pet will increase health by two and decrease happiness by one.
                         petHealth = Math.Min(10, petHealth + 2);
                         petHappiness = Math.Max(0, petHappiness - 1);
                         Console.WriteLine($"\n{petName} is resting. His health improves, and happiness decreases slightly.");
@@ -67,6 +72,7 @@ namespace PROG8051_virtual_pet_simulator_project
                         Console.WriteLine($"- Health: " + Convert.ToString(petHealth));
                         Console.WriteLine($"- Happiness: " + Convert.ToString(petHappiness));
 
+                        // display message based on current pet status.
                         if (petHunger >= 8 || petHappiness <= 2 || petHealth <= 2)
                         {
                             if (petHunger >= 8)
@@ -89,6 +95,7 @@ namespace PROG8051_virtual_pet_simulator_project
                         break;
                 }
 
+                // warning if the pet health deterioration.
                 if (petCare != 4 && petCare != 5 && (petHunger >= 8 || petHappiness <= 2 || petHealth <= 2))
                 {
                     if (petHunger >= 8)
@@ -101,12 +108,12 @@ namespace PROG8051_virtual_pet_simulator_project
                         Console.WriteLine($"\nWarning: {petName}! seems unhealthy.");
                 }
 
+                // hourly simulation based on per actions. 
                 petHunger = Math.Min(10, petHunger + 1);
                 petHappiness = Math.Max(0, petHappiness - 1);
 
+            } while (petCare != 5); // run loop until user action not equal to exist.
 
-
-            } while (petCare != 5);
         }
     }
 }
