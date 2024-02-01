@@ -11,9 +11,22 @@ namespace PROG8051_virtual_pet_simulator_project
             string petType;
             string petName;
             int petCare;
+
+            // initial pet condition
             int petHealth = 8;
             int petHunger = 5;
             int petHappiness = 5;
+
+            // constant for the pet actions.
+            const int FEEDING = 1;
+            const int PLAYING = 2;
+            const int RESETING = 3;
+            const int STATUS = 4;
+            const int EXIT = 5;
+
+            // pet status monitoring scale.
+            const int MINIMUM = 0;
+            const int MAXIMUM = 10;
 
             Console.WriteLine("Welcome to the Virtual Pet Simulator!");
 
@@ -47,28 +60,28 @@ namespace PROG8051_virtual_pet_simulator_project
                 // pet care actions
                 switch (petCare)
                 {
-                    case 1:
+                    case FEEDING:
                         // feed to pet will decrease hunger by two and increase health by one.
-                        petHunger = Math.Max(0, petHunger - 2);
-                        petHealth = Math.Min(10, petHealth + 1);
+                        petHunger = Math.Max(MINIMUM, petHunger - 2);
+                        petHealth = Math.Min(MAXIMUM, petHealth + 1);
                         Console.WriteLine($"\nYou feed {petName}. His hunger decreases, and health improves slightly.");
                         break;
 
-                    case 2:
+                    case PLAYING:
                         // play with pet will increase hunger by one and happiness by two.
-                        petHappiness = Math.Min(10, petHappiness + 2);
-                        petHunger = Math.Min(10, petHunger + 1);
+                        petHappiness = Math.Min(MAXIMUM, petHappiness + 2);
+                        petHunger = Math.Min(MAXIMUM, petHunger + 1);
                         Console.WriteLine($"\nYou played with {petName}. His happiness increases, and hunger increases slightly.");
                         break;
 
-                    case 3:
+                    case RESETING:
                         // reseting pet will increase health by two and decrease happiness by one.
-                        petHealth = Math.Min(10, petHealth + 1);
-                        petHappiness = Math.Max(0, petHappiness - 1);
+                        petHealth = Math.Min(MAXIMUM, petHealth + 1);
+                        petHappiness = Math.Max(MINIMUM, petHappiness - 1);
                         Console.WriteLine($"\n{petName} is resting. His health improves, and happiness decreases slightly.");
                         break;
 
-                    case 4:
+                    case STATUS:
                         Console.WriteLine($"\n{petName}'s Status: ");
                         Console.WriteLine($"- Hunger: " + Convert.ToString(petHunger));
                         Console.WriteLine($"- Health: " + Convert.ToString(petHealth));
@@ -88,7 +101,7 @@ namespace PROG8051_virtual_pet_simulator_project
                         }
                         break;
 
-                    case 5:
+                    case EXIT:
                         Console.WriteLine("\nThank you for using application.");
                         break;
 
@@ -98,7 +111,7 @@ namespace PROG8051_virtual_pet_simulator_project
                 }
 
                 // warning if the pet health deterioration.
-                if (petCare != 4 && petCare != 5 && (petHunger > 8 || petHappiness < 2 || petHealth < 2))
+                if (petCare != STATUS && petCare != EXIT && (petHunger > 8 || petHappiness < 2 || petHealth < 2))
                 {
                     if (petHunger > 8)
                         Console.WriteLine($"\nWarning: {petName} will refusing to play if too hungry.");
@@ -111,8 +124,8 @@ namespace PROG8051_virtual_pet_simulator_project
                 }
 
                 // hourly simulation based on per actions. 
-                petHunger = Math.Min(10, petHunger + 1);
-                petHappiness = Math.Max(0, petHappiness - 1);
+                petHunger = Math.Min(MAXIMUM, petHunger + 1);
+                petHappiness = Math.Max(MINIMUM, petHappiness - 1);
 
             } while (petCare != 5); // run loop until user action not equal to exist.
 
