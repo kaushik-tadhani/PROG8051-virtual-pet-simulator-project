@@ -44,19 +44,30 @@ namespace PROG8051_virtual_pet_simulator_project
                 switch (petCare)
                 {
                     case 1:
-                       
+                        petHunger = Math.Max(0, petHunger - 2);
+                        petHealth = Math.Min(10, petHealth + 1);
+                        Console.WriteLine($"\nYou feed {petName}. His hunger decreases, and health improves slightly.");
                         break;
 
                     case 2:
-                        
+                        petHappiness = Math.Min(10, petHappiness + 2);
+                        petHunger = Math.Min(10, petHunger + 1);
+                        Console.WriteLine($"\nYou played with {petName}. His happiness increases, and hunger increases slightly.");
                         break;
 
                     case 3:
-                       
+                        petHealth = Math.Min(10, petHealth + 2);
+                        petHappiness = Math.Max(0, petHappiness - 1);
+                        Console.WriteLine($"\n{petName} is resting. His health improves, and happiness decreases slightly.");
                         break;
 
                     case 4:
-                       
+                        Console.WriteLine($"\n{petName}'s Status: ");
+                        Console.WriteLine($"- Hunger: " + Convert.ToString(petHunger));
+                        Console.WriteLine($"- Health: " + Convert.ToString(petHealth));
+                        Console.WriteLine($"- Happiness: " + Convert.ToString(petHappiness));
+
+                        
                         break;
 
                     case 5:
@@ -68,7 +79,7 @@ namespace PROG8051_virtual_pet_simulator_project
                         break;
                 }
 
-               
+                
 
 
 
