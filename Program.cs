@@ -41,6 +41,34 @@ namespace PROG8051_virtual_pet_simulator_project
                 Console.Write("\nUser Input: ");
                 petCare = Convert.ToInt32(Console.ReadLine());
 
+                switch (petCare)
+                {
+                    case 1:
+                       
+                        break;
+
+                    case 2:
+                        
+                        break;
+
+                    case 3:
+                       
+                        break;
+
+                    case 4:
+                       
+                        break;
+
+                    case 5:
+                        Console.WriteLine("\nThank you for using application.");
+                        break;
+
+                    default:
+                        Console.WriteLine("\nInvalid options! Please select option from 1-5.");
+                        break;
+                }
+
+               
 
 
 
