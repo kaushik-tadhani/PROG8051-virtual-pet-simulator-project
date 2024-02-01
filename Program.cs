@@ -66,6 +66,18 @@ namespace PROG8051_virtual_pet_simulator_project
                         Console.WriteLine($"- Hunger: " + Convert.ToString(petHunger));
                         Console.WriteLine($"- Health: " + Convert.ToString(petHealth));
                         Console.WriteLine($"- Happiness: " + Convert.ToString(petHappiness));
+
+                        if (petHunger >= 8 || petHappiness <= 2 || petHealth <= 2)
+                        {
+                            if (petHunger >= 8)
+                                Console.WriteLine($"\nWarning: {petName} will refusing to play if too hungry.");
+
+                            if (petHappiness <= 2)
+                                Console.WriteLine($"\nWarning: {petName}! seems unhappy.");
+
+                            if (petHealth <= 2)
+                                Console.WriteLine($"\nWarning: {petName}! seems unhealthy.");
+                        }
                         break;
 
                     case 5:
@@ -75,6 +87,18 @@ namespace PROG8051_virtual_pet_simulator_project
                     default:
                         Console.WriteLine("\nInvalid options! Please select option from 1-5.");
                         break;
+                }
+
+                if (petCare != 4 && petCare != 5 && (petHunger >= 8 || petHappiness <= 2 || petHealth <= 2))
+                {
+                    if (petHunger >= 8)
+                        Console.WriteLine($"\nWarning: {petName} will refusing to play if too hungry.");
+
+                    if (petHappiness <= 2)
+                        Console.WriteLine($"\nWarning: {petName}! seems unhappy.");
+
+                    if (petHealth <= 2)
+                        Console.WriteLine($"\nWarning: {petName}! seems unhealthy.");
                 }
 
                 petHunger = Math.Min(10, petHunger + 1);
