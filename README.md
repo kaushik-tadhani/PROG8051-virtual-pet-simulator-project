@@ -1,7 +1,7 @@
 
 # PROG8051: Virtual Pet Simulator Project
 
-Develop a console application in C# that simulates caring for a virtual pet. This comprehensive project encompasses fundamental programming concepts like basic program structure, console I/O, data types, type conversion, and control flow elements.
+Console application in C# that simulates caring for a virtual pet. This comprehensive project encompasses fundamental programming concepts like basic program structure, console I/O, data types, type conversion, and control flow elements.
 
 ![Virtual Pet Simulator Project](https://i.imgur.com/4NjhpEp.gif)
 
