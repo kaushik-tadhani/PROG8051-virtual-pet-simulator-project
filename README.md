@@ -1,3 +1,3 @@
-# CashBook
+# PROG8051: Virtual Pet Simulator Project
 
-CashBook API
+
